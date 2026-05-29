@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juego de la Moneda</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial;
+    background:#87CEEB;
+}
+
+#score{
+    position:absolute;
+    top:10px;
+    left:10px;
+    font-size:30px;
+    color:white;
+    font-weight:bold;
+}
+
+#coin{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:gold;
+    position:absolute;
+    cursor:pointer;
+    box-shadow:0 0 10px orange;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="score">Puntos: 0</div>
+<div id="coin"></div>
+
+<script>
+
+let puntos = 0;
+
+const coin = document.getElementById("coin");
+const score = document.getElementById("score");
+
+function moverMoneda(){
+    const x = Math.random() * (window.innerWidth - 80);
+    const y = Math.random() * (window.innerHeight - 80);
+
+    coin.style.left = x + "px";
+    coin.style.top = y + "px";
+}
+
+coin.addEventListener("click", () => {
+    puntos++;
+    score.innerHTML = "Puntos: " + puntos;
+
+    moverMoneda();
+});
+
+setInterval(moverMoneda, 1000);
+
+moverMoneda();
+
+</script>
+
+</body>
+</html>
